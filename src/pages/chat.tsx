@@ -23,7 +23,7 @@ const ChatPage = () => {
             "text_type": "basic",
             "text_tone": "happy",
             "text_length": "short",
-            "preview": "",
+            "preview": responseData,
             "chinese": true,
             "lang": "en-US",
             "topic": inputValue,
@@ -48,6 +48,8 @@ const ChatPage = () => {
         value={inputValue}
         onChange={handleInputChange}
         fullWidth
+        autoFocus
+        multiline
       />
       <br/>
       <br />
@@ -61,7 +63,9 @@ const ChatPage = () => {
       {responseData && (
         <div>
           <Typography variant="subtitle1">
-            Results for "{inputValue}": "{responseData}"
+            问题："{inputValue}"
+            <br/>
+            回答："{responseData}"
           </Typography>
         </div>
       )}
