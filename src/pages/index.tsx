@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import ChatPage from "./chat"
+import StandardChat from "./StandardChat"
 
 const pageStyles = {
   color: "#232129",
@@ -17,9 +17,9 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
-        试试 ChatGPT
+        万物之中 希望之美
       </h1>
-      <ChatPage></ChatPage>
+      <StandardChat></StandardChat>
     </main>
   )
 }

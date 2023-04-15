@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const ChatPage = () => {
+const SimpleChat = () => {
   const [inputValue, setInputValue] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,5 +73,5 @@ const ChatPage = () => {
   );
 };
 
-export default ChatPage;
+export default SimpleChat;
 
