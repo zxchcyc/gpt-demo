@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { ReactCopyToClipboard } from 'react-copy-to-clipboard';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+let prompt = [];
 
 const StandardChat = () => {
   const [inputValue, setInputValue] = useState('');
@@ -22,19 +23,24 @@ const StandardChat = () => {
 
   const handleInputSubmit = async () => {
     setIsLoading(true);
+    
+    prompt.push(inputValue);
     const response = await axios.post(
         "https://aistudios.com/api/text_rephraser_all2",
         {
             "text_type": "basic",
             "text_tone": "happy",
-            "text_length": "short",
+            "text_length": "long",
             "preview": "",
             "chinese": true,
             "lang": "en-US",
-            "topic": inputValue,
+            "topic": JSON.stringify(prompt),
             "action": "simple"
         }
     );
+    prompt.push(response.data.result);
+    console.log("prompt", prompt);
+
     setChatData([...chatData, { input: inputValue, output: response.data.result }]);
     setInputValue('');
     setIsLoading(false);
@@ -106,4 +112,5 @@ const StandardChat = () => {
 };
 
 export default StandardChat;
+
 
