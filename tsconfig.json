@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "5.0",
+    "suppressImplicitAnyIndexErrors": true,
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Projects */
