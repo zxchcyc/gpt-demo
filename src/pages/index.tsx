@@ -1,6 +1,6 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import StandardChat from "./StandardChat"
+import SimpleChat from "../components/SimpleChat"
 
 const pageStyles = {
   color: "#232129",
@@ -19,11 +19,11 @@ const IndexPage: React.FC<PageProps> = () => {
       <h1 style={headingStyles}>
         万物之中 希望至美
       </h1>
-      <StandardChat></StandardChat>
+      <SimpleChat></SimpleChat>
     </main>
   )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>zxchcyc</title>
+export const Head: HeadFC = () => <title>Demo</title>
