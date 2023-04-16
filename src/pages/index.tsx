@@ -17,7 +17,7 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
       <h1 style={headingStyles}>
-        万物之中 希望之美
+        万物之中 希望至美
       </h1>
       <StandardChat></StandardChat>
     </main>
@@ -26,4 +26,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>zxchcyc</title>
