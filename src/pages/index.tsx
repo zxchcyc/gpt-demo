@@ -4,12 +4,12 @@ import SimpleChat from "../components/SimpleChat"
 
 const pageStyles = {
   color: "#232129",
-  padding: 48,
+  padding: 24,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
 }
 const headingStyles = {
   marginTop: 0,
-  marginBottom: 64,
+  marginBottom: 16,
   maxWidth: 320,
 }
 
