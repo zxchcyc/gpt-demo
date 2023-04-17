@@ -11,6 +11,7 @@ const headingStyles = {
   marginTop: 0,
   marginBottom: 16,
   maxWidth: 320,
+  color: '#ffc400',
 }
 
 const IndexPage: React.FC<PageProps> = () => {
