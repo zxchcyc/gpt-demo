@@ -42,8 +42,9 @@ const SimpleChat = () => {
   };
 
   const handleDownloadImage = () => {
+    if(!chatData.length) return;
+    
     const node = document.getElementById('chat-messages');
-
     toPng(node).then((dataUrl) => {
       const link = document.createElement('a');
       link.download = 'chat-image.png';
