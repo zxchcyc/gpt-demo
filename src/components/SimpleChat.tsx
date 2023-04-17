@@ -7,7 +7,6 @@ import sendRequest from '../repos/aistudio';
 
 const SimpleChat = () => {
   const [selectedAssistant, setSelectedAssistant] = useState('全能型');
-  const [inputValue, setInputValue] = useState('');
   const [chatData, setChatData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
@@ -22,25 +21,21 @@ const SimpleChat = () => {
     setChatData([]);
   };
 
-  const handleInputChanged = (event) => {
-    setInputValue(event.target.value);
-  };
-
   const handleSelectChange = (event) => {
     setSelectedAssistant(event.target.value);
   };
 
   const handleInputSubmit = async () => {
     setIsLoading(true);
+    const inputValue = inputRef.current.value;
     const actualInputContent = `${prompts[selectedAssistant]} ${inputValue}`;
     const topicContents = chatData.flatMap((e) => [e.input, e.output]);
     topicContents.push(actualInputContent);
 
     const result = await sendRequest(JSON.stringify(topicContents));
     setChatData(prevChatData => [...prevChatData, { input: inputValue, output: result }]);
-    setInputValue('');
     setIsLoading(false);
-    inputRef.current.focus();
+    // inputRef.current.focus();
     inputRef.current.value = '';
   };
 
@@ -52,7 +47,7 @@ const SimpleChat = () => {
         ))}
       </Grid>
       <Grid item xs={12}>
-        <FormComponent selectedAssistant={selectedAssistant} handleSelectChange={handleSelectChange} handleInputChanged={handleInputChanged} handleInputSubmit={handleInputSubmit} handleClearPrompt={handleClearPrompt} isLoading={isLoading} inputRef={inputRef}/>
+        <FormComponent selectedAssistant={selectedAssistant} handleSelectChange={handleSelectChange} handleInputSubmit={handleInputSubmit} handleClearPrompt={handleClearPrompt} isLoading={isLoading} inputRef={inputRef}/>
       </Grid>
     </Grid>
   );
