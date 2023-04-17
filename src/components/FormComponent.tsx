@@ -2,7 +2,7 @@ import React from 'react';
 import { LinearProgress, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { prompts } from '../constants/chat.constants';
 
-const FormComponent = ({ selectedAssistant, handleSelectChange, handleInputSubmit, handleClearPrompt, isLoading, inputRef }) => {
+const FormComponent = ({ selectedAssistant, handleSelectChange, handleInputSubmit, handleClearPrompt, handleDownloadImage, isLoading, inputRef }) => {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !isLoading) {
     //   handleInputSubmit();
@@ -24,7 +24,8 @@ const FormComponent = ({ selectedAssistant, handleSelectChange, handleInputSubmi
       </FormControl>
       <TextField label="您需要问点什么..." fullWidth autoFocus multiline minRows="2"  inputRef={inputRef} onKeyPress={handleKeyPress} />
       <Button variant="contained" onClick={handleInputSubmit}> 发送 </Button>
-      <Button variant="outlined" onClick={handleClearPrompt} style={{ margin: 10 }} > 清除上下文 </Button>{' '}
+      <Button variant="outlined" onClick={handleClearPrompt} style={{ margin: 10 }} > 清除上下文 </Button>
+      <Button variant="outlined" onClick={handleDownloadImage} > 导出图片 </Button>
     </div>
   );
 };

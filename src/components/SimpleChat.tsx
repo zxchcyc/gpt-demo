@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Grid } from '@mui/material';
+import { toPng } from 'html-to-image';
+
 import ChatMessage from './ChatMessage';
 import FormComponent from './FormComponent';
 import { prompts } from '../constants/chat.constants';
@@ -33,21 +35,42 @@ const SimpleChat = () => {
     topicContents.push(actualInputContent);
 
     const result = await sendRequest(JSON.stringify(topicContents));
-    setChatData(prevChatData => [...prevChatData, { input: inputValue, output: result }]);
+    setChatData((prevChatData) => [...prevChatData, { input: inputValue, output: result }]);
     setIsLoading(false);
     // inputRef.current.focus();
     inputRef.current.value = '';
   };
 
+  const handleDownloadImage = () => {
+    const node = document.getElementById('chat-messages');
+
+    toPng(node).then((dataUrl) => {
+      const link = document.createElement('a');
+      link.download = 'chat-image.png';
+      link.href = dataUrl;
+      link.click();
+    }).catch((error) => {
+      console.error('Error occurred while generating image', error);
+    });
+  };
+
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
+      <Grid item xs={12} id="chat-messages">
         {chatData.map((item, index) => (
           <ChatMessage key={index} message={item} idx={index} />
         ))}
       </Grid>
       <Grid item xs={12}>
-        <FormComponent selectedAssistant={selectedAssistant} handleSelectChange={handleSelectChange} handleInputSubmit={handleInputSubmit} handleClearPrompt={handleClearPrompt} isLoading={isLoading} inputRef={inputRef}/>
+        <FormComponent
+          selectedAssistant={selectedAssistant}
+          handleSelectChange={handleSelectChange}
+          handleInputSubmit={handleInputSubmit}
+          handleDownloadImage={handleDownloadImage}
+          handleClearPrompt={handleClearPrompt}
+          isLoading={isLoading}
+          inputRef={inputRef}
+        />
       </Grid>
     </Grid>
   );
