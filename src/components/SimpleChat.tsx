@@ -57,12 +57,12 @@ const SimpleChat = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} id="chat-messages">
+      <Grid xs={12} id="chat-messages">
         {chatData.map((item, index) => (
           <ChatMessage key={index} message={item} idx={index} />
         ))}
       </Grid>
-      <Grid item xs={12}>
+      <Grid xs={12}>
         <FormComponent
           selectedAssistant={selectedAssistant}
           handleSelectChange={handleSelectChange}
