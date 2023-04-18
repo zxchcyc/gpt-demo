@@ -31,8 +31,8 @@ const SimpleChat = () => {
     setIsLoading(true);
     const inputValue = inputRef.current.value;
     const actualInputContent = `${prompts[selectedAssistant]} ${inputValue}`;
-    const topicContents = chatData.flatMap((e) => [e.input, e.output]);
-    topicContents.push(actualInputContent);
+    const topicContents = [...chatData];
+    topicContents.push({input: actualInputContent});
 
     const result = await sendRequest(JSON.stringify(topicContents));
     setChatData((prevChatData) => [...prevChatData, { input: inputValue, output: result }]);
@@ -56,13 +56,13 @@ const SimpleChat = () => {
   };
 
   return (
-    <Grid container spacing={2}>
-      <Grid xs={12} id="chat-messages">
+    <Grid container>
+      <Grid item xs={12} id="chat-messages">
         {chatData.map((item, index) => (
           <ChatMessage key={index} message={item} idx={index} />
         ))}
       </Grid>
-      <Grid xs={12}>
+      <Grid item xs={12}>
         <FormComponent
           selectedAssistant={selectedAssistant}
           handleSelectChange={handleSelectChange}

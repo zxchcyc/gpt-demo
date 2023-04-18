@@ -38,11 +38,11 @@ const ChatMessage = ({ message, idx }) => {
 
   return (
     <>
-      <Grid xs={12} style={{ backgroundColor: '#fffaf2', padding: 10 }}>
+      <Grid item xs={12} style={{ backgroundColor: '#fffaf2', padding: 10 }}>
         <Typography variant='h6' >Q{idx + 1}:</Typography>
         {renderMarkdown({ value: message.input })}
       </Grid>
-      <Grid xs={12} style={{ backgroundColor: '#fff5e6', padding: 10 }}>
+      <Grid item  xs={12} style={{ backgroundColor: '#fff5e6', padding: 10 }}>
         <Typography variant='h6'>A{idx + 1}:</Typography>
         {renderMarkdown({ value: message.output })}
         <CopyToClipboard text={message.output}

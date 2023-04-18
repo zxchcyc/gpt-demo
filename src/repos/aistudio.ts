@@ -9,7 +9,7 @@ async function sendRequest(topicContents: string) {
       "chinese": true,
       "lang": "en-US",
       "action": "simple",
-      topic: topicContents,
+      topic:  "假设我们在对话, 我是 input, 你是 output, 你的回答不用包含 output 字段, 这是对话的上下文——" + topicContents,
     };
     
     const response = await axios.post(
